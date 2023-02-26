@@ -1,0 +1,28 @@
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+// Стили для разработки, удалить после готовности проекта
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Intel', sans-serif;
+    font-size: var(--main-font-size);
+    font-weight: 400;
+    color: var(--main-text);
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}

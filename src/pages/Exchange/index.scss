@@ -1,0 +1,124 @@
+.appMain{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1414px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+
+    &Title {
+        margin-bottom: 25px;
+        font-size: 3.06rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    &Date {
+        margin-bottom: 12px;
+        font-size: 1.06rem;
+        line-height: 1.6;
+        font-weight: 600;
+        color: var(--date-text);
+        text-transform: uppercase;
+    }
+
+    &Choose {
+        margin-bottom: 30px;
+        padding: 40px;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+    }
+
+    &ChooseTitle {
+        margin-bottom: 9px;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-weight: 600;
+    }
+
+    &ChooseCurr {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    &ChooseButton {
+        position: relative;
+        z-index: 1;
+        padding: 7px 10px;
+        border-color: transparent;
+        border-radius: 4px;
+        background-color: var(--date-text);
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--menu-text);
+        cursor: pointer;
+        transition: background-color 0.4s, color 0.4s;
+
+        &:hover {
+            background-color: var(--hover-button);
+            color: var(--date-text);
+        }
+
+        // &:hover::after {
+        //     // content: attr(data-tooltip);
+        //     content: 'A';
+        //     z-index: 10;
+        //     position: absolute;
+        //     display: block;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100px;
+        //     height: 5px;
+        //     font-size: 30px;
+        //     color: red;
+        // }
+    }
+
+    &Rates {
+        position: relative;
+    }
+
+    &RatesActiveCurr {
+        margin-bottom: 12px;
+        font-size: 1.06rem;
+        line-height: 1.6;
+        font-weight: 600;
+        color: var(--date-text);
+        text-transform: uppercase;
+    }
+
+    &RatesValute {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 50px 15px 10px;
+        border-radius: 4px;
+        font-weight: 500;
+        opacity: 0.7;
+        box-shadow: 10px 15px 25px var(--current-shadow);
+        transition: background-color 0.4s;
+
+        &:hover {
+            background-color: var(--current-hover);
+        } 
+    }
+
+    &RatesCurr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+        grid-gap: 5px 50px;
+    }
+
+    &RatesValuteValue {
+        min-width: 80px;
+        margin-left: auto;
+        text-align: right;
+    }
+
+    // &RatesValuteCurr {
+    //     margin-left: 10px
+    // }
+}

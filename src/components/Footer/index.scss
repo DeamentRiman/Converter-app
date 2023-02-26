@@ -1,0 +1,13 @@
+.appFooter {
+    background: var(--header-bg);
+
+    &Container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1414px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px;
+    }
+} 

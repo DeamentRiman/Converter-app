@@ -1,0 +1,27 @@
+.appHeader {
+    background: var(--header-bg);
+
+    &Container{
+        display: flex;
+        width: 100%;
+        max-width: 1414px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px;
+    }
+
+    &Nav{
+        display: flex;
+    }
+
+    &Nav a + a{
+        margin-left: 40px;
+    }
+
+    &Nav a {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-weight: 600;
+        color: var(--menu-text);
+    }
+}
