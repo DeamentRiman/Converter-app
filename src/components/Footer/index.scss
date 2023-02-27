@@ -10,4 +10,48 @@
         margin-right: auto;
         padding: 40px;
     }
+
+    &Social{
+        display: flex;
+        margin: 0 auto;
+    }
+
+    &Social a ~ a {
+        margin-left: 15px;
+    }
+
+    &SocialIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--social-button);
+        backdrop-filter: blur(5px);
+        overflow: hidden;
+        transition: opacity 0.4s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &SocialFB{
+        width: 12px;
+        height: 20px;
+        color: var(--menu-text);
+    }
+
+    &SocialInstagram {
+        width: 17px;
+        height: 17px;
+        color: var(--menu-text);
+    }
+
+    &SocialYoutube {
+        width: 18px;
+        height: 13px;
+        color: var(--menu-text);
+    }
 } 

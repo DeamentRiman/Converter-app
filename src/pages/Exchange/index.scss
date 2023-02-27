@@ -1,6 +1,7 @@
 .appMain{
     display: flex;
     flex-direction: column;
+    flex: 1 0 auto;
     width: 100%;
     max-width: 1414px;
     margin-left: auto;
@@ -61,21 +62,25 @@
             background-color: var(--hover-button);
             color: var(--date-text);
         }
-
-        // &:hover::after {
-        //     // content: attr(data-tooltip);
-        //     content: 'A';
-        //     z-index: 10;
-        //     position: absolute;
-        //     display: block;
-        //     top: 0;
-        //     left: 0;
-        //     width: 100px;
-        //     height: 5px;
-        //     font-size: 30px;
-        //     color: red;
-        // }
     }
+
+    &ChooseButtonActive{
+        position: relative;
+        z-index: 1;
+        padding: 7px 10px;
+        border-color: transparent;
+        border-radius: 4px;
+        background-color: #FDEEE7; 
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--date-text);
+        cursor: pointer;
+        transition: background-color 0.4s, color 0.4s;
+
+        &:hover {
+            background-color: var(--hover-button);
+        }
+     }
 
     &Rates {
         position: relative;
@@ -117,8 +122,4 @@
         margin-left: auto;
         text-align: right;
     }
-
-    // &RatesValuteCurr {
-    //     margin-left: 10px
-    // }
 }

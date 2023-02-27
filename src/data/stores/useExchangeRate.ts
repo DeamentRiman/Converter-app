@@ -2,6 +2,8 @@ import React from "react";
 import { create } from 'zustand';
 import axios from 'axios';
 import { ExchangeRateTemp } from '../../types/getTypes';
+import { getDate } from '../../utils/getData';
+
 
 const ExchangeRateStore = create<ExchangeRateTemp>((set, get) => ({
     rates: {
@@ -22,7 +24,7 @@ const ExchangeRateStore = create<ExchangeRateTemp>((set, get) => ({
             const { rates } = get();
             set({ 
                 rates: Object.assign(rates, response.data.Valute),
-                date: response.data.Timestamp,
+                date: getDate(response.data.Date),
                 usdValue: response.data.Valute.USD.Value,
             })
         }
