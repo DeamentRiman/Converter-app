@@ -4,10 +4,10 @@ export interface Rate {
 }
 
 export interface IRateData {
-    id: string;
+    ID: string;
     NumCode: number;
-    name: string;
-    value: number;
+    Name: string;
+    Value: number;
 }
 
 export interface ExchangeRateTemp {

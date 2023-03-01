@@ -1,0 +1,30 @@
+.appMain {
+    &Container {
+        display: flex;
+    }
+
+    &From,
+    &To {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+    }
+
+    &From {
+        margin-right: 50px;
+    }
+
+    &FromCurr,
+    &ToCurr {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    &Value {
+        min-height: 40px;
+        padding: 4px 10px;
+    }
+    
+}

@@ -49,17 +49,28 @@ const Exchange: React.FC = () => {
                                 } else
                                     return (<div className="appMainRatesValute" key={item.ID}>
                                         <span>{item.Name}, {item.CharCode}</span>
-                                        <span className="appMainRatesValuteValue">{(item.Value / item.Nominal).toFixed(3)} {activeCurrencies}</span>
+                                        <span className="appMainRatesValuteValue">{(item.Value).toFixed(3)} {activeCurrencies}</span>
                                     </div>)
-                            })) : (
-                                ratesArray.map((item) => {
+                            })) : (ratesArray.map((item) => {
                                     if (item.CharCode == activeCurrencies) {
                                         return;
-                                    } else
-                                        return (<div className="appMainRatesValute" key={item.ID}>
-                                            <span>{item.Name} {item.CharCode}</span>
-                                            <span>{(usdValue / (item.Value / item.Nominal)).toFixed(3)} {activeCurrencies}</span>
-                                        </div>)
+                                    } else { 
+                                        if (item.CharCode == "RUB") {
+                                            return (
+                                                <div className="appMainRatesValute" key={item.ID}>
+                                                    <span>{item.Name}, {item.CharCode}</span>
+                                                    <span className="appMainRatesValuteValue">{(rates[activeCurrencies].Nominal / rates[activeCurrencies].Value).toFixed(3)} {activeCurrencies}</span>
+                                                </div>
+                                            )
+                                        } else {
+                                            return (
+                                                <div className="appMainRatesValute" key={item.ID}>
+                                                    <span>{item.Name}, {item.CharCode}</span>
+                                                    <span className="appMainRatesValuteValue">{(item.Value * rates[activeCurrencies].Nominal / (item.Nominal * rates[activeCurrencies].Value)).toFixed(3)} {activeCurrencies}</span>
+                                                </div>
+                                            )
+                                        }
+                                    }
                                 })
                             )}
                         </div>
