@@ -1,7 +1,7 @@
 .appHeader {
     background: var(--header-bg);
 
-    &Container{
+    &Container {
         display: flex;
         width: 100%;
         max-width: 1414px;
@@ -10,11 +10,11 @@
         padding: 40px;
     }
 
-    &Nav{
+    &Nav {
         display: flex;
     }
 
-    &Nav a + a{
+    &Nav a + a {
         margin-left: 40px;
     }
 

@@ -1,4 +1,4 @@
-.appMain{
+.appMain {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
@@ -64,13 +64,13 @@
         }
     }
 
-    &ChooseButtonActive{
+    &ChooseButtonActive {
         position: relative;
         z-index: 1;
         padding: 7px 10px;
         border-color: transparent;
         border-radius: 4px;
-        background-color: #FDEEE7; 
+        background-color: #fdeee7;
         font-size: 0.875rem;
         line-height: 1.6;
         color: var(--date-text);
@@ -80,7 +80,7 @@
         &:hover {
             background-color: var(--hover-button);
         }
-     }
+    }
 
     &Rates {
         position: relative;
@@ -107,7 +107,7 @@
 
         &:hover {
             background-color: var(--current-hover);
-        } 
+        }
     }
 
     &RatesCurr {

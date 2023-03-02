@@ -1,4 +1,4 @@
-export const getDate = (date:string) => {
+export const getDate = (date: string) => {
     const month = [
         'January',
         'February',
@@ -13,7 +13,13 @@ export const getDate = (date:string) => {
         'November',
         'December',
     ]
-    const todaysDate = new Date(date);
+    const todaysDate = new Date(date)
 
-    return ( todaysDate.getDate() + ' ' + month[todaysDate.getMonth()] + ' ' + todaysDate.getFullYear());
+    return (
+        todaysDate.getDate() +
+        ' ' +
+        month[todaysDate.getMonth()] +
+        ' ' +
+        todaysDate.getFullYear()
+    )
 }

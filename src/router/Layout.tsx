@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom';
-import '../router/index.scss';
+import { NavLink, Outlet } from 'react-router-dom'
+import '../router/index.scss'
 
 const Layout: React.FC = () => {
     const setActiveLink = ({ isActive }: any) => {

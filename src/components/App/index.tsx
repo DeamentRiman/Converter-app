@@ -6,19 +6,19 @@ import ExchangeRateStore from '../../data/stores/useExchangeRate'
 import './index.scss'
 
 const App = () => {
-  const URL = 'https://www.cbr-xml-daily.ru/daily_json.js';
-  const { getRates } = ExchangeRateStore((state => state));
+    const URL = 'https://www.cbr-xml-daily.ru/daily_json.js'
+    const { getRates } = ExchangeRateStore((state) => state)
 
-  useEffect(() => {
-    getRates(URL);
-  }, []);
+    useEffect(() => {
+        getRates(URL)
+    }, [])
 
-  return (
-    <div className="App">
-      <Header />
-      <Footer/>
-    </div>
-  )
+    return (
+        <div className="App">
+            <Header />
+            <Footer />
+        </div>
+    )
 }
 
 export default App

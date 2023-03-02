@@ -6,7 +6,9 @@ body {
 }
 
 // Стили для разработки, удалить после готовности проекта
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 

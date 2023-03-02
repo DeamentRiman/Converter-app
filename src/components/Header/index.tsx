@@ -9,13 +9,13 @@ import Layout from '../../router/Layout'
 
 const Header: React.FC = () => {
     return (
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route path="/" element={<Converter />} />
-                        <Route path="/Exchange" element={<Exchange />} />
-                        <Route path="*" element={<ErrorPage />} />
-                    </Route>
-                </Routes>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Converter />} />
+                <Route path="/Exchange" element={<Exchange />} />
+                <Route path="*" element={<ErrorPage />} />
+            </Route>
+        </Routes>
     )
 }
 

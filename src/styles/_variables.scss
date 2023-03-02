@@ -3,17 +3,17 @@
     --main-font-size: 16px;
 
     /*Colors*/
-    --main-bg: #E5E5E5;
-    --header-bg: linear-gradient(264.47deg, #2E43F0 29.39%, #6677FF 93.49%);
+    --main-bg: #e5e5e5;
+    --header-bg: linear-gradient(264.47deg, #2e43f0 29.39%, #6677ff 93.49%);
 
-    --menu-text: #FFFFFF;
-    --main-text: #05000B;
-    --date-text: #FF5A05;
-    
+    --menu-text: #ffffff;
+    --main-text: #05000b;
+    --date-text: #ff5a05;
+
     --border-color: rgba(66, 82, 207, 0.1);
     --hover-button: rgba(255, 90, 5, 0.1);
     --current-shadow: rgba(0, 0, 0, 0.04);
-    --current-hover: #FDEEE7;
+    --current-hover: #fdeee7;
 
     --social-button: rgba(255, 255, 255, 0.29);
 
@@ -24,4 +24,3 @@
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
 }
-

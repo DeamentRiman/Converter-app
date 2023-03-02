@@ -8,12 +8,8 @@
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended"
     ],
-    "overrides": [
-    ],
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    "overrides": [],
+    "plugins": ["react", "@typescript-eslint"],
     "rules": {
         "no-var": "error",
         "no-console": "warn",

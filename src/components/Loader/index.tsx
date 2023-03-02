@@ -1,9 +1,14 @@
-import React from "react";
-import '../Loader/index.scss';
+import React from 'react'
+import '../Loader/index.scss'
 
-const Loader:React.FC = (value) => { 
+const Loader: React.FC = (value) => {
     return (
-        <div className='ldsEllipsis'><div></div><div></div><div></div><div></div></div>
-    )   
+        <div className="ldsEllipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    )
 }
-export default Loader;
+export default Loader

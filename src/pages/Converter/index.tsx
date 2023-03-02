@@ -1,36 +1,50 @@
 import React, { useEffect, useState } from 'react'
-import ExchangeRateStore from '../../data/stores/useExchangeRate';
+import ExchangeRateStore from '../../data/stores/useExchangeRate'
 import './index.scss'
 
 const Converter = () => {
-    const { rates, usdValue } = ExchangeRateStore((state => state));
-    const [fromCurrency, setFromCurrency] = React.useState('USD');
-    const [toCurrency, setToCurrency] = React.useState('RUB');
-    const [fromValue, setFromValue] = useState(1);
-    const [toValue, setToValue] = useState(0);
-    const ratesArray = Object.values(rates);
+    const { rates, usdValue } = ExchangeRateStore((state) => state)
+    const ratesArray = Object.values(rates)
+    const [fromCurrency, setFromCurrency] = React.useState('USD')
+    const [toCurrency, setToCurrency] = React.useState('RUB')
+    const [fromValue, setFromValue] = useState(1)
+    const [toValue, setToValue] = useState(0)
 
     function toRubl() {
-        const convertation = ratesArray.filter(item => item.CharCode == fromCurrency);
-        const a = +(convertation[0].Value * fromValue).toFixed(3);
-        setToValue(a);
+        const convertation = ratesArray.filter(
+            (item) => item.CharCode == fromCurrency
+        )
+        const a = +(convertation[0].Value * fromValue).toFixed(3)
+        setToValue(a)
     }
 
-    function fromOtherCurr() {
+    const fromOtherCurr = () => {
         if (fromCurrency == 'RUB') {
-            const convertation = ratesArray.filter(item => item.CharCode == toCurrency);
-            const a = +(fromValue * convertation[0].Nominal / convertation[0].Value).toFixed(3);
-            setToValue(a);
+            const convertation = ratesArray.filter(
+                (item) => item.CharCode == toCurrency
+            )
+            const a = +(
+                (fromValue * convertation[0].Nominal) /
+                convertation[0].Value
+            ).toFixed(3)
+            setToValue(a)
         } else {
-            const convertation = ratesArray.filter(item => item.CharCode == toCurrency);
-            const a = +(fromValue * usdValue * convertation[0].Nominal / convertation[0].Value).toFixed(3);
-            setToValue(a);
+            const convertation = ratesArray.filter(
+                (item) => item.CharCode == toCurrency
+            )
+            const a = +(
+                (fromValue * usdValue * convertation[0].Nominal) /
+                convertation[0].Value
+            ).toFixed(3)
+            setToValue(a)
         }
     }
 
     useEffect(() => {
-        toCurrency == "RUB" ? (toRubl()) : (fromOtherCurr());
-    });
+        if (ratesArray.length >= 2) {
+            toCurrency == 'RUB' ? toRubl() : fromOtherCurr()
+        }
+    }, [ratesArray])
 
     return (
         <main className="appMain">
@@ -40,23 +54,34 @@ const Converter = () => {
                     <div className="appMainFromCurr">
                         {ratesArray.map((rate) => {
                             return (
-                                <input className={fromCurrency == rate.CharCode ? 'appMainChooseButtonActive' : 'appMainChooseButton'} 
+                                <input
+                                    className={
+                                        fromCurrency == rate.CharCode
+                                            ? 'appMainChooseButtonActive'
+                                            : 'appMainChooseButton'
+                                    }
                                     type="button"
                                     key={rate.ID}
                                     value={rate.CharCode}
                                     onClick={(evt) => {
-                                        evt.preventDefault();
-                                        setFromCurrency(rate.CharCode);
-                                    }} />
+                                        evt.preventDefault()
+                                        setFromCurrency(rate.CharCode)
+                                    }}
+                                />
                             )
                         })}
                     </div>
 
                     {
-                        <input className="appMainValue" type="number" value={fromValue} onChange={(evt) => {
-                            const evtValue = Number(evt.target.value);
-                            setFromValue(evtValue);
-                        }} />
+                        <input
+                            className="appMainValue"
+                            type="number"
+                            value={fromValue}
+                            onChange={(evt) => {
+                                const evtValue = Number(evt.target.value)
+                                setFromValue(evtValue)
+                            }}
+                        />
                     }
                 </div>
                 <div className="appMainTo">
@@ -64,28 +89,34 @@ const Converter = () => {
                     <div className="appMainToCurr">
                         {ratesArray.map((rate) => {
                             return (
-                                <input className={toCurrency == rate.CharCode ? 'appMainChooseButtonActive' : 'appMainChooseButton'} 
+                                <input
+                                    className={
+                                        toCurrency == rate.CharCode
+                                            ? 'appMainChooseButtonActive'
+                                            : 'appMainChooseButton'
+                                    }
                                     type="button"
                                     key={rate.ID}
                                     value={rate.CharCode}
                                     onClick={(evt) => {
-                                        setToCurrency(rate.CharCode);
-                                    }} />
+                                        setToCurrency(rate.CharCode)
+                                    }}
+                                />
                             )
                         })}
                     </div>
 
                     {
-                        <input className="appMainValue" type="number" value={toValue}
-                            onChange={(evt) => {
-                                console.log(evt.target.value);
-                            }} />
+                        <input
+                            className="appMainValue"
+                            type="number"
+                            value={toValue}
+                            onChange={(evt) => console.log(1)}
+                        />
                     }
                 </div>
             </section>
-
-
-        </main >
+        </main>
     )
 }
 

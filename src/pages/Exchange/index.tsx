@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import ExchangeRateStore from '../../data/stores/useExchangeRate';
-import Loader from '../../components/Loader/index';
+import ExchangeRateStore from '../../data/stores/useExchangeRate'
+import Loader from '../../components/Loader/index'
 import './index.scss'
 
 const Exchange: React.FC = () => {
-    const { rates, date, usdValue } = ExchangeRateStore((state => state));
-    const [loading, setLoading] = useState(true);
-    const [activeCurrencies, setActiveCurrencies] = useState('RUB');
-    const ratesArray = Object.values(rates);
+    const { rates, date } = ExchangeRateStore((state) => state)
+    const [loading, setLoading] = useState(true)
+    const [activeCurrencies, setActiveCurrencies] = useState('RUB')
+    const ratesArray = Object.values(rates)
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
+            setLoading(false)
+        }, 2000)
         return () => {
-            clearTimeout(timer);
-        };
-    }, [activeCurrencies]);
+            clearTimeout(timer)
+        }
+    }, [activeCurrencies])
 
     return (
         <main className="appMain">
@@ -26,53 +26,109 @@ const Exchange: React.FC = () => {
                 <h4 className="appMainChooseTitle">Choose a currency</h4>
                 <div className="appMainChooseCurr">
                     {ratesArray.map((rate) => {
-                        return (<input
-                            className={activeCurrencies == rate.CharCode ? 'appMainChooseButtonActive' : 'appMainChooseButton'}
-                            type="button"
-                            key={rate.ID}
-                            value={rate.CharCode}
-                            onClick={(evt) => {
-                                setActiveCurrencies(rate.CharCode);
-                            }}
-                        />)
+                        return (
+                            <input
+                                className={
+                                    activeCurrencies == rate.CharCode
+                                        ? 'appMainChooseButtonActive'
+                                        : 'appMainChooseButton'
+                                }
+                                type="button"
+                                key={rate.ID}
+                                value={rate.CharCode}
+                                onClick={(evt) => {
+                                    setActiveCurrencies(rate.CharCode)
+                                }}
+                            />
+                        )
                     })}
                 </div>
             </div>
             <div className="appMainRates">
-                {loading ? <Loader /> : (
+                {loading ? (
+                    <Loader />
+                ) : (
                     <div className="appMainChoose">
-                        <p className="appMainRatesActiveCurr">Active currencies: {activeCurrencies}</p>
-                        <div className='appMainRatesCurr'>
-                            {(activeCurrencies == 'RUB') ? (ratesArray.map((item) => {
-                                if (item.CharCode == 'RUB') {
-                                    return;
-                                } else
-                                    return (<div className="appMainRatesValute" key={item.ID}>
-                                        <span>{item.Name}, {item.CharCode}</span>
-                                        <span className="appMainRatesValuteValue">{(item.Value).toFixed(3)} {activeCurrencies}</span>
-                                    </div>)
-                            })) : (ratesArray.map((item) => {
-                                    if (item.CharCode == activeCurrencies) {
-                                        return;
-                                    } else { 
-                                        if (item.CharCode == "RUB") {
-                                            return (
-                                                <div className="appMainRatesValute" key={item.ID}>
-                                                    <span>{item.Name}, {item.CharCode}</span>
-                                                    <span className="appMainRatesValuteValue">{(rates[activeCurrencies].Nominal / rates[activeCurrencies].Value).toFixed(3)} {activeCurrencies}</span>
-                                                </div>
-                                            )
-                                        } else {
-                                            return (
-                                                <div className="appMainRatesValute" key={item.ID}>
-                                                    <span>{item.Name}, {item.CharCode}</span>
-                                                    <span className="appMainRatesValuteValue">{(item.Value * rates[activeCurrencies].Nominal / (item.Nominal * rates[activeCurrencies].Value)).toFixed(3)} {activeCurrencies}</span>
-                                                </div>
-                                            )
-                                        }
-                                    }
-                                })
-                            )}
+                        <p className="appMainRatesActiveCurr">
+                            Active currencies: {activeCurrencies}
+                        </p>
+                        <div className="appMainRatesCurr">
+                            {activeCurrencies == 'RUB'
+                                ? ratesArray.map((item) => {
+                                      if (item.CharCode == 'RUB') {
+                                          return
+                                      } else
+                                          return (
+                                              <div
+                                                  className="appMainRatesValute"
+                                                  key={item.ID}
+                                              >
+                                                  <span>
+                                                      {item.Name},{' '}
+                                                      {item.CharCode}
+                                                  </span>
+                                                  <span className="appMainRatesValuteValue">
+                                                      {item.Value.toFixed(3)}{' '}
+                                                      {activeCurrencies}
+                                                  </span>
+                                              </div>
+                                          )
+                                  })
+                                : ratesArray.map((item) => {
+                                      if (item.CharCode == activeCurrencies) {
+                                          return
+                                      } else {
+                                          if (item.CharCode == 'RUB') {
+                                              return (
+                                                  <div
+                                                      className="appMainRatesValute"
+                                                      key={item.ID}
+                                                  >
+                                                      <span>
+                                                          {item.Name},{' '}
+                                                          {item.CharCode}
+                                                      </span>
+                                                      <span className="appMainRatesValuteValue">
+                                                          {(
+                                                              rates[
+                                                                  activeCurrencies
+                                                              ].Nominal /
+                                                              rates[
+                                                                  activeCurrencies
+                                                              ].Value
+                                                          ).toFixed(3)}{' '}
+                                                          {activeCurrencies}
+                                                      </span>
+                                                  </div>
+                                              )
+                                          } else {
+                                              return (
+                                                  <div
+                                                      className="appMainRatesValute"
+                                                      key={item.ID}
+                                                  >
+                                                      <span>
+                                                          {item.Name},{' '}
+                                                          {item.CharCode}
+                                                      </span>
+                                                      <span className="appMainRatesValuteValue">
+                                                          {(
+                                                              (item.Value *
+                                                                  rates[
+                                                                      activeCurrencies
+                                                                  ].Nominal) /
+                                                              (item.Nominal *
+                                                                  rates[
+                                                                      activeCurrencies
+                                                                  ].Value)
+                                                          ).toFixed(3)}{' '}
+                                                          {activeCurrencies}
+                                                      </span>
+                                                  </div>
+                                              )
+                                          }
+                                      }
+                                  })}
                         </div>
                     </div>
                 )}
