@@ -18,4 +18,3 @@
 Обязательные требования: React, TS, Webpack / Vite, ESLint, Prettier.
 
 Дополнительно: SCSS, Zustand
-Подключить: Postcss
